@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Please enter directory to be scanned"
+
+read dir
+
+if [ -d "$dir" ]; then
+	echo "Directory exists"
+else
+	echo "Does not exist"
+	exit
+fi
+
+find $dir -name "*.txt" | while read fname; do
+	wc -w "$fname"
+done
