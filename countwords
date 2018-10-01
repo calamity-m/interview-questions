@@ -14,11 +14,4 @@ fi
 find $1 -name "*.txt" | while read fname; do
 	# For every .txt matching file, run a word count on them
 	wc -w "$fname"
-
-	# Using linux sep, grep, sort and uniq with linux pipelines, count
-	# and print frequency of each letter in the found textfile (case insensitive)
-	if [[ "$2" == "-f" ]]; then
-		echo "Letter Frequency:"
-		sed 's/\(.\)/\1\n/g' "$fname" | grep '[A-Za-z]' | sort -f | uniq -ic
-	fi
 done
