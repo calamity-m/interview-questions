@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Check to see if the file exists
+if [ ! -f "$1" ]; then
+	# If the file does not exist
+	echo "File not found"
+	exit
+fi
+
+# Check to see if found file is valid
+if [[ $1 != *.txt ]]; then
+	# Not a .txt file so we just exit
+	echo "Can only check .txt files"
+	exit
+fi
+
+# Echo stage of script with given filename
+echo Frequency of letters in: $1
+
+# Using Linux sep, grep, sort and uniq with linux pipelines, count
+# and print frequency of each letter in the file (case insensitive)
+sed 's/\(.\)/\1\n/g' "$1" | grep '[A-Za-z]' | sort -f | uniq -ic
