@@ -14,9 +14,9 @@ AND
 m.director = 'Wes Anderson';
 
 -- 3. List the title, release year, genre and director of all movies staring 'Jeff Goldblum'
-but not 'Bruce Willis'?.
-SELECT title, genre, actor, director
+-- but not 'Bruce Willis'?.
+SELECT title, genre, actors, director
 FROM movies m
 INNER JOIN
-(Select movie, string_agg(actor, ',') AS actor from movie_cast GROUP BY 1) c
-ON m.title = c.movie WHERE actor LIKE '%Jeff%' AND actor NOT LIKE '%Bruce%';
+(Select movie, string_agg(actor, ', ') AS actors from movie_cast GROUP BY 1) c
+ON m.title = c.movie WHERE actors LIKE '%Jeff%' AND actors NOT LIKE '%Bruce%';
