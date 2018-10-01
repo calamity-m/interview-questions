@@ -1,16 +1,17 @@
 #!/bin/bash
 
-echo "Please enter directory to be scanned"
-
-read dir
-
-if [ -d "$dir" ]; then
-	echo "Directory exists"
+# Check if our argument is a valid directory
+if [ -d "$1" ]; then
+	# Our argument is a valid directory so we can continue
+	echo "Directory Exists"
 else
-	echo "Does not exist"
+	# Our argument is an invalid directory, exit script
+	echo "Directory does not exist, exiting script"
 	exit
 fi
 
-find $dir -name "*.txt" | while read fname; do
+# Basic search using given directory matching files using .txt
+find $1 -name "*.txt" | while read fname; do
+	# For every .txt matching file, run a word count on them
 	wc -w "$fname"
 done
