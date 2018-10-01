@@ -15,7 +15,7 @@ m.director = 'Wes Anderson';
 
 -- 3. List the title, release year, genre and director of all movies staring 'Jeff Goldblum'
 -- but not 'Bruce Willis'?.
-SELECT title, genre, actors, director
+SELECT title, release_year, genre, director
 FROM movies m
 INNER JOIN
 (Select movie, string_agg(actor, ', ') AS actors from movie_cast GROUP BY 1) c
