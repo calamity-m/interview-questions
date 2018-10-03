@@ -47,6 +47,8 @@ def createKeyspace(keyspaceName):
         CREATE KEYSPACE IF NOT EXISTS %s
         WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' }
         """ % keyspaceName)
+    # Possibly change replication strategy to NetworkTopology - New to Cassandra so not sure
+    
     
     # Set the keyspace of the session to our new or old keyspace
     session.set_keyspace(keyspaceName)
